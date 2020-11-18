@@ -7,13 +7,17 @@ import java.util.Map;
 
 public class MainClass {
     public static void main(String[] args) throws IOException {
-
-        while (true) {
-            BaseFrequenciesCharacters base = BaseFrequenciesCharacters.getBase();
-
+        boolean exit = false;
+        while (!exit) {
+            System.out.println("Please type in a string or type 'exit' to exit");
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
             String s = reader.readLine();
-
+            if("exit".equals(s)) {
+                exit = true;
+                continue;
+            }
+            
+            BaseFrequenciesCharacters base = BaseFrequenciesCharacters.getBase();
             Map<Character, Integer> frequencyMap = base.getFrequencyMap(s);
             FrequencyPrinter printer = new FrequencyPrinter();
 
